@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DevilerApplication {
+public class DeliverApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DevilerApplication.class, args);
+		SpringApplication.run(DeliverApplication.class, args);
 	}
 
 }
