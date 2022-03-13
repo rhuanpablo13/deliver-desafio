@@ -3,10 +3,10 @@ package com.deliver.deviler;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class DevilerApplicationTests {
+// @SpringBootTest
+class DeliverApplicationTests {
 
-	@Test
+	// @Test
 	void contextLoads() {
 	}
 
