@@ -18,4 +18,4 @@ RUN mvn clean package -DskipTests
 # executar o projeto buildado
 FROM openjdk:11
 COPY --from=MAVEN_BUILD target/deliver-0.0.1-SNAPSHOT.jar ./
-CMD java -Xmx1024m -Xms1024m -server -Dspring.profiles.active=${PROFILE} -jar deliver-0.0.1-SNAPSHOT.jar
+CMD java -Xmx1024m -Xms1024m -server -Dspring.profiles.active=${SPRING_PROFILES_ACTIVE} -jar deliver-0.0.1-SNAPSHOT.jar
