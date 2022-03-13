@@ -1,4 +1,4 @@
-package com.deliver.domain;
+package com.deliver.domains;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -18,6 +18,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "CONTA_A_PAGAR")
@@ -25,6 +26,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class ContaPagar {
 
     @Id
@@ -40,17 +42,33 @@ public class ContaPagar {
     @Column(nullable = false)
     private Date dataVencimento;
 
-    @Column()
+    @Column(nullable = false)
     private Date dataPagamento;
 
+    @Column(nullable = false)
+    private BigDecimal multa;
+
+    @Column(nullable = false)
+    private BigDecimal jurosDia;
+
+    @Column(nullable = false)
+    private Integer diasAtraso;
+
+    @Column(nullable = false, precision = 8, scale = 2)
+    private BigDecimal valorCorrigido;
+    
 
     public ContaPagarDTO convertDTO() {
         return ContaPagarDTO.builder()
         .id(id)
         .nome(nome)
-        .dataPagamento(Utils.dateToString(dataPagamento, DatePattern.DDMMYYYY))
-        .dataVencimento(Utils.dateToString(dataVencimento, DatePattern.DDMMYYYY))
-        .valorOriginal(Utils.formmatMoney(valorOriginal))
+        .dataPagamento(Utils.dateToString(dataPagamento, DatePattern.DDMMYYYY.getPattern()))
+        .dataVencimento(Utils.dateToString(dataVencimento, DatePattern.DDMMYYYY.getPattern()))
+        .valorOriginal(Utils.formatMoney(valorOriginal))
+        .jurosDia(Utils.formatMoney(jurosDia))
+        .multa(Utils.formatMoney(multa))
+        .diasAtraso(diasAtraso)
+        .valorCorrigido(Utils.formatMoney(valorCorrigido))
         .build();
     }
 }

@@ -11,15 +11,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class ContaPagarDTO {
+public class ContaPagarRequestDTO {
     
-    private Integer id;
     private String nome;
     private String valorOriginal;
     private String dataVencimento;
     private String dataPagamento;
-    private Integer diasAtraso;
-    private String multa;
-    private String jurosDia;
-    private String valorCorrigido;
 }
