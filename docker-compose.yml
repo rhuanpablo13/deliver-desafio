@@ -15,19 +15,19 @@ services:
         volumes:
             - "./db/db-init.sql:/docker-entrypoint-initdb.d/1.sql"
         networks: 
-            - deliver-api-network
+            - deliver-api-network        
     adminer:
         image: adminer
         restart: always
         ports:
             - 9000:8080
+        depends_on:
+            - db
     api:
         networks: 
             - deliver-api-network
         links:
-            - db
-        depends_on:
-            - db
+            - db        
         build:
             context: ./
             dockerfile: Dockerfile
@@ -40,11 +40,10 @@ services:
             SPRING_DATASOURCE_URL: "jdbc:mysql://db:3306/deliver_prod?useTimezone=true&serverTimezone=UTC&useSSL=false"
             SPRING_DATASOURCE_USERNAME: "root"
             SPRING_DATASOURCE_PASSWORD: "pass"
-            flyway.url: jdbc:mysql://db:3307/deliver_prod
-            flyway.user: root
-            flyway.password: pass
         volumes:
             - .m2:/root/.m2
+        depends_on:
+            - db
 volumes:
     my-db:
 networks:
