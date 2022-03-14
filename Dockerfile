@@ -1,7 +1,6 @@
 # clonar o projeto e mudar a branch para master
 
 FROM alpine:3.8 AS GIT_PROJECT
-ARG api_instance=$api_instance
 RUN apk update
 RUN apk add git
 RUN git clone "https://github.com/rhuanpablo13/deliver-desafio.git"
