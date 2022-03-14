@@ -1,0 +1,13 @@
+--- Copying files at Mon Mar 14 17:58:05 UTC 2022
+/usr/share/maven/ref/settings-docker.xml
+ /usr/share/maven/ref/settings-docker.xml -> settings-docker.xml
+copy settings-docker.xml to /root/.m2
+--- Copying files at Mon Mar 14 18:04:30 UTC 2022
+/usr/share/maven/ref/settings-docker.xml
+ /usr/share/maven/ref/settings-docker.xml -> settings-docker.xml
+--- Copying files at Mon Mar 14 18:12:41 UTC 2022
+/usr/share/maven/ref/settings-docker.xml
+ /usr/share/maven/ref/settings-docker.xml -> settings-docker.xml
+--- Copying files at Mon Mar 14 18:27:55 UTC 2022
+/usr/share/maven/ref/settings-docker.xml
+ /usr/share/maven/ref/settings-docker.xml -> settings-docker.xml
