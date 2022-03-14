@@ -33,7 +33,7 @@ git https://github.com/rhuanpablo13/deliver-desafio
 ## Abra o projeto no vscode
 #### 💠Execute o maven update, clicando com o botão direito do mouse no arquivo pom.xml e selecionando a opção "Update Project"
 #### 💠Abra o item [MAVEN] no painel esquerdo e clique com o botão direito sobre o projeto [deliver] e selecione a opção "install"
-![alt text](/resources-readme/maven.jpg) .
+
 
 ## Configurando o application.properties 📂
 
@@ -42,7 +42,7 @@ git https://github.com/rhuanpablo13/deliver-desafio
 ## Iniciando o projeto 🚀
 
 #### 💠Inicie o projeto na aba [SPRING BOOT DASHBOARD]
-![alt text](/resources-readme/spring-start.jpg)
+
 
 #### 💠O servidor inciará na porta:8080 - acesse <http://localhost:8080/api/swagger-ui.html>
 
