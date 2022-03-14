@@ -18,6 +18,10 @@ public class ContaPagarConverter {
         conta.setDataVencimento(Utils.stringToDate(dto.getDataVencimento(), DatePattern.YYYY_MM_DD.getPattern()));
         String valorOriginal = corrigirValoresMonetarios(dto.getValorOriginal());
         conta.setValorOriginal(new BigDecimal(valorOriginal));
+        conta.setDiasAtraso(0);
+        conta.setJurosDia(BigDecimal.ZERO);
+        conta.setMulta(BigDecimal.ZERO);
+        conta.setValorCorrigido(BigDecimal.ZERO);
         conta.setNome(dto.getNome());
         return conta;
     }

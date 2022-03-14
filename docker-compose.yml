@@ -1,51 +1,49 @@
-# version: '3.5'
-# services:    
-#     database:
-#         image: mysql:5.7
-#         container_name: docker-mysql
-#         restart: unless-stopped
-#         ports:
-#             - 3307:3306
-#         environment:
-#             - MYSQL_ROOT_PASSWORD=pass
-#             - MYSQL_DATABASE=deliver_prod
-#         volumes:
-#             - db:/var/lib/mysql        
-#     api:
-#         network_mode: "host"
-#         links:
-#             - database
-#         depends_on:
-#             - database
-#         build:
-#             context: ./
-#             dockerfile: Dockerfile
-#         ports:
-#             - 6868:8080
-#         environment:
-#             - SPRING_PROFILES_ACTIVE=prod
-#         volumes:
-#             - .m2:/root/.m2
-# volumes:
-#   db:
-
 version: '3.1'
 
 services:
     db:
         image: mysql
+        container_name: docker-mysql
         command: --default-authentication-plugin=mysql_native_password
         restart: always
         environment:
-            MYSQL_ROOT_PASSWORD: 'pass'
+            MYSQL_ROOT_PASSWORD: pass
         ports:
-            - "3307:3306"
+            - 3307:3306
         expose:
             - 3307
+        volumes:
+            - "./db/db-init.sql:/docker-entrypoint-initdb.d/1.sql"
+        networks: 
+            - deliver-api-network
     adminer:
         image: adminer
         restart: always
         ports:
             - 9000:8080
+    api:
+        networks: 
+            - deliver-api-network
+        links:
+            - db
+        depends_on:
+            - db
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        ports:
+            - 6868:8080
+        expose:
+            - 6868
+        environment:
+            SPRING_PROFILES_ACTIVE: "prod"
+            SPRING_DATASOURCE_URL: "jdbc:mysql://db:3306/deliver_prod?useTimezone=true&serverTimezone=UTC&useSSL=false"
+            SPRING_DATASOURCE_USERNAME: "root"
+            SPRING_DATASOURCE_PASSWORD: "pass"
+        volumes:
+            - .m2:/root/.m2
 volumes:
     my-db:
+networks:
+    deliver-api-network:
+        driver: bridge

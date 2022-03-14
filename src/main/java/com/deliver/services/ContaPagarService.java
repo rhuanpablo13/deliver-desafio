@@ -69,7 +69,6 @@ public class ContaPagarService {
         
         // se diasAtraso > 0 -> está atrasado
         if (diasAtraso > 0) {
-            diasAtraso = diasAtraso * -1;
             log.info("conta a pagar está atrasado {} dias", (diasAtraso));
 
             contaPagar.setDiasAtraso(diasAtraso);

@@ -34,8 +34,10 @@ RUN apk add maven
 
 # WORKDIR "/home/deliver"
 
-# RUN mvn clean package
+RUN mvn clean package -DskipTest
 
-EXPOSE 8081
+EXPOSE 8080
 
+# CMD java -Xmx1024m -Xms1024m -server -Dspring.profiles.active=${SPRING_PROFILES_ACTIVE} -jar deliver-0.0.1-SNAPSHOT.jar
+# CMD java -Xmx1024m -Xms1024m -server -Dspring.profiles.active=prod -jar deliver-0.0.1-SNAPSHOT.jar
 CMD [ "java", "-jar",  "/home/target/deliver-0.0.1-SNAPSHOT.jar"]
